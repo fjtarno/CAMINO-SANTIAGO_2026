@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Guía del Peregrino · Ultreia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment: #F3E9D3;
+    --parchment-2: #EADFC2;
+    --parchment-3: #E4D6B4;
+    --ink: #2C2118;
+    --ink-soft: #4A3B2C;
+    --burgundy: #6B1626;
+    --burgundy-dark: #4A0F1B;
+    --burgundy-soft: #8A3244;
+    --gold: #A9802F;
+    --gold-light: #CBA858;
+    --gold-pale: #E4C87A;
+    --camino: #E3A93B;
+    --slate-green: #5F6E4E;
+    --slate-green-soft: #7C8C63;
+    --terracotta: #B15E36;
+    --blueslate: #5C7286;
+    --shadow: rgba(44,33,24,0.25);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--parchment); color:var(--ink);
+    font-family:'EB Garamond', serif; font-size:18px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Cinzel', serif; letter-spacing:0.03em; color:var(--burgundy-dark); margin:0; }
+  .script{ font-family:'Caveat', cursive; }
+  a{ color:var(--burgundy); }
+
+  .watermark{
+    position:absolute; inset:0; pointer-events:none; opacity:0.16;
+    background-repeat:repeat; background-size:160px 160px;
+    background-image:url("data:image/png;base64,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dQ1NccyvB87d4Etn7eDNr9owtOe+iXZnk8XrdrRWMXvkIyQ+TbA5Mt726NDubu2NlElt5QQvGptcV7K9dvb0jlzT91bkmvs7ck19y3JNfUuzzbf/qq95U11jY0e2ebH+JeTdVuEmXAV/t+7iTJUvfjUgb4nNotL1/v0XNwwOPHAmFerX2fIlcibcefq+bRXAjYd+kXc1/oux2boUXWhmeTPbe6ZPloRt1fn7ASRy9iUBWYnmdEeu6a+X5Rra9VsRERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERGR09BN5N/lOnJN/efy++sc7G+aTL9vpyYnosCJKHAiosCJKHAiosCJKHAiCpyIKHAiCpyIKHAiCpyIAiciCpyIAiciCpyIAiciCpyIAieiwImIAieiwImIAieiwIkocCKiwIkocCKiwIkocCKiwIkocCIKnIgocCIKnIgocCIKnIgCJyIKnIgCJyIKnIgCJyIKnIgCJ6LAiYgCJ6LAiYgCJ6LAiShwIqLAiShwIqLAiShwIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiLvBv8fPG8BPuPvE2oAAAAASUVORK5CYII=");
+  }
+
+  /* ---------- top nav ---------- */
+  .topnav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; background:var(--burgundy-dark);
+    position:sticky; top:0; z-index:50;
+    box-shadow:0 2px 10px var(--shadow);
+  }
+  .topnav a.back{
+    color:var(--gold-pale); text-decoration:none; font-family:'Cinzel', serif;
+    font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    display:flex; align-items:center; gap:6px;
+  }
+  .topnav a.back:hover{ color:#fff; }
+  .topnav .brand{ color:var(--parchment-2); font-family:'Cinzel Decorative','Cinzel',serif; font-size:18px; letter-spacing:0.05em; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; text-align:center; padding:52px 20px 40px; overflow:hidden;
+    background:radial-gradient(ellipse at 50% -10%, #fbf3de 0%, transparent 60%), var(--parchment);
+    border-bottom:1px solid var(--gold-light);
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:760px; margin:0 auto; }
+  .hero .eyebrow{ font-family:'Caveat', cursive; font-size:22px; color:var(--burgundy-soft); margin:0 0 4px; }
+  .hero h1{ font-family:'Cinzel Decorative','Cinzel',serif; font-size:clamp(34px,6vw,54px); font-weight:800; color:var(--burgundy);
+    text-shadow:1px 1px 0 var(--parchment), 2px 2px 3px rgba(74,15,27,0.18); }
+  .hero p.sub{ font-family:'Cinzel', serif; font-size:14px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-top:12px; }
+  .hero .lede{ font-size:18px; color:var(--ink-soft); margin-top:18px; max-width:620px; margin-left:auto; margin-right:auto; }
+
+  /* ---------- quick nav chips ---------- */
+  .quicknav{
+    display:flex; flex-wrap:wrap; gap:9px; justify-content:center;
+    max-width:820px; margin:26px auto 0;
+  }
+  .quicknav a{
+    text-decoration:none; font-family:'Cinzel', serif; font-size:12.5px; letter-spacing:0.03em;
+    color:var(--burgundy-dark); background:var(--parchment-3); border:1px solid var(--gold-light);
+    border-radius:20px; padding:7px 16px; transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .quicknav a:hover{ background:var(--gold-pale); transform:translateY(-1px); }
+
+  /* ---------- sections ---------- */
+  main{ max-width:900px; margin:0 auto; padding:44px 20px 30px; }
+
+  .g-section{
+    background:var(--parchment); border:1px solid var(--gold-light); border-radius:4px;
+    box-shadow:0 6px 18px var(--shadow); margin-bottom:34px; overflow:hidden; scroll-margin-top:76px;
+  }
+  .g-head{
+    display:flex; align-items:center; gap:16px;
+    background:linear-gradient(120deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+    color:var(--parchment); padding:16px 22px;
+  }
+  .g-icon{ font-size:28px; line-height:1; flex-shrink:0; }
+  .g-head h2{ color:#FBF3DE; font-size:clamp(19px,3vw,23px); font-weight:600; letter-spacing:0.01em; }
+  .g-body{ padding:22px 26px 26px; }
+  .g-body p{ margin:0 0 14px; }
+  .g-body p:last-child{ margin-bottom:0; }
+  .g-body h3{
+    font-size:15px; color:var(--gold); letter-spacing:0.06em; text-transform:uppercase;
+    margin:20px 0 8px; display:flex; align-items:center; gap:8px;
+  }
+  .g-body h3:first-child{ margin-top:0; }
+  .g-body h3::after{ content:''; flex:1; height:1px; background:var(--gold-light); }
+
+  .g-list{ list-style:none; margin:0 0 14px; padding:0; }
+  .g-list li{
+    position:relative; padding:6px 0 6px 26px; font-size:16.5px;
+    border-bottom:1px dotted var(--gold-light);
+  }
+  .g-list li:last-child{ border-bottom:none; }
+  .g-list li::before{ content:'\2726'; position:absolute; left:0; top:6px; color:var(--gold); font-size:13px; }
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 16px; }
+  .tag{
+    background:var(--parchment-2); border:1px solid var(--gold-light); border-radius:16px;
+    padding:5px 13px; font-size:14px; color:var(--ink-soft);
+  }
+
+  .callout{
+    background:var(--parchment-2); border-left:4px solid var(--terracotta);
+    border-radius:4px; padding:12px 16px; margin:14px 0; font-size:16px;
+  }
+  .callout.gold{ border-left-color:var(--gold); }
+  .callout.green{ border-left-color:var(--slate-green-soft); }
+  .callout b{ color:var(--burgundy-dark); }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width:640px){ .two-col{ grid-template-columns:1fr; } }
+
+  footer{
+    background:var(--burgundy-dark); color:var(--parchment-2); text-align:center;
+    padding:36px 20px 30px;
+  }
+  footer .script{ font-size:24px; color:var(--gold-pale); display:block; margin-bottom:6px; }
+  footer p{ margin:4px 0; font-size:14px; opacity:0.85; }
+  footer a{ color:var(--gold-pale); }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a class="back" href="camino-ultreia.html">&#8592; Volver a Ultreia</a>
+  <span class="brand">Ultreia</span>
+</nav>
+
+<header class="hero">
+  <div class="watermark"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">&mdash; Antes de echar a andar &mdash;</p>
+    <h1>La Guía del Peregrino</h1>
+    <p class="sub">Preparación &middot; Equipo &middot; Botiquín &middot; Consejos de ruta</p>
+    <p class="lede">Todo lo que conviene saber antes del 3 de agosto: cómo entrenar estas semanas, qué meter en la mochila y en el botiquín, cómo cuidar los pies y las normas de convivencia para caminar en grupo entre las dos hermandades.</p>
+  </div>
+  <nav class="quicknav">
+    <a href="#preparacion">Preparación física</a>
+    <a href="#estiramientos">Estiramientos</a>
+    <a href="#equipo">Equipo y ropa</a>
+    <a href="#mochila">La mochila</a>
+    <a href="#botiquin">Botiquín</a>
+    <a href="#pies">Cuidado de los pies</a>
+    <a href="#piernas">Piernas y bastón</a>
+    <a href="#ruta">Normas en la ruta</a>
+    <a href="#convivencia">Convivencia</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- PREPARACION FISICA -->
+  <section class="g-section" id="preparacion">
+    <div class="g-head"><span class="g-icon">&#128694;</span><h2>Preparación física, semanas antes</h2></div>
+    <div class="g-body">
+      <p>El cuerpo es el verdadero motor de esta aventura: caminaremos cargando nuestro propio peso más el de la mochila de etapa, sobre asfalto, tierra y piedra, con cuestas pronunciadas, durante varios días seguidos. Cuanto mejor preparados lleguemos, m&aacute;s disfrutaremos de los primeros d&iacute;as &mdash; y por tanto del resto.</p>
+      <h3>Plan orientativo</h3>
+      <ul class="g-list">
+        <li><b>Desde 2 meses antes:</b> caminar de forma regular, al menos 10.000 pasos diarios (entre 10 y 13 km, según la zancada de cada uno).</li>
+        <li><b>La última semana:</b> subir el listón hasta distancias de 15&ndash;20 km, para que el cuerpo reconozca el esfuerzo de una etapa real.</li>
+        <li><b>Todo ese tiempo:</b> entrena con el mismo calzado que vas a usar en el Camino. Nunca estrenes botas o zapatillas el primer día &mdash; es la causa número uno de rozaduras y ampollas.</li>
+      </ul>
+      <div class="callout gold">Si seguimos estos tres puntos a rajatabla, los dos o tres primeros días &mdash; los más duros para el cuerpo &mdash; deberían pasar sin sobresaltos, y el resto de la semana será mucho más llevadero.</div>
+      <p>No se trata de hacer el máximo de kilómetros en el menor tiempo posible, sino de ganar resistencia y fortalecer las piernas de forma progresiva. Los paseos cortos que se van alargando, a ser posible con algo de monte y desnivel, son la mejor preparación.</p>
+    </div>
+  </section>
+
+  <!-- ESTIRAMIENTOS -->
+  <section class="g-section" id="estiramientos">
+    <div class="g-head"><span class="g-icon">&#129496;</span><h2>Calentamiento y estiramientos</h2></div>
+    <div class="g-body">
+      <p>Antes de cualquier actividad física poco habitual conviene calentar y, sobre todo, estirar bien el tren inferior. En cada etapa haremos una tanda de ejercicios antes de salir y otra al terminar, centrada en estas zonas:</p>
+      <div class="tag-row">
+        <span class="tag">Glúteos</span>
+        <span class="tag">Región pélvica</span>
+        <span class="tag">Cuádriceps</span>
+        <span class="tag">Isquiotibiales</span>
+        <span class="tag">Gemelos</span>
+        <span class="tag">Tibial anterior</span>
+        <span class="tag">Pies y tobillos</span>
+      </div>
+      <p>No hace falta un estiramiento sofisticado: con una rutina sencilla de 5&ndash;10 minutos, insistiendo en gemelos, cuádriceps e isquiotibiales, es suficiente. Y ningún reparo en hacerlos delante de otros peregrinos &mdash; casi todo el mundo en el Camino hace lo mismo, y el cuerpo lo agradece muchísimo de cara a terminar bien la etapa.</p>
+    </div>
+  </section>
+
+  <!-- EQUIPO Y ROPA -->
+  <section class="g-section" id="equipo">
+    <div class="g-head"><span class="g-icon">&#127761;</span><h2>Equipo y ropa</h2></div>
+    <div class="g-body">
+      <p>Agosto en Galicia suele traer temperaturas suaves, pero la zona es húmeda y el tiempo puede cambiar de un día para otro &mdash; conviene ir preparados para sol, fresco y lluvia a la vez.</p>
+
+      <h3>Calzado</h3>
+      <p>Es, con diferencia, el elemento más importante. Debe ser cómodo, ya usado (nunca estrenado) y con suela flexible. Si las botas o zapatillas sujetan bien el tobillo y son impermeables, mejor. Es buena idea llevar un segundo par (por ejemplo, zapatillas ligeras) para alternar y para las tardes en el alojamiento, además de unas chanclas para la ducha y para descansar los pies.</p>
+
+      <h3>Ropa</h3>
+      <ul class="g-list">
+        <li>Al menos 3 camisetas técnicas transpirables de manga corta, con las mínimas costuras posibles.</li>
+        <li>Un forro polar, sudadera o cortavientos ligero para las primeras horas de la mañana y la noche.</li>
+        <li>Dos pantalones para caminar (mejor de trekking, a ser posible desmontables) y uno de repuesto para el viaje de vuelta.</li>
+        <li>Chubasquero ligero — imprescindible, aunque no llueva todos los días.</li>
+        <li>Un par de calcetines altos, sin costuras y transpirables, por cada día (los específicos «antiampollas» ayudan bastante).</li>
+        <li>Gorra o sombrero y gafas de sol, para protegernos en los tramos sin sombra.</li>
+      </ul>
+      <div class="callout">La ropa interior también debería ser técnica y con pocas costuras: la humedad y las horas de caminata provocan rozaduras en los sitios más inesperados.</div>
+    </div>
+  </section>
+
+  <!-- MOCHILA -->
+  <section class="g-section" id="mochila">
+    <div class="g-head"><span class="g-icon">&#127890;</span><h2>La mochila de cada día</h2></div>
+    <div class="g-body">
+      <p>Aunque el grueso del equipaje viaje aparte, cada peregrino necesita una mochila pequeña (unos 20 litros), ligera e impermeable, con hombreras regulables, para llevar encima durante la etapa. Cada día debería contener:</p>
+      <div class="two-col">
+        <ul class="g-list">
+          <li>Agua: al menos 1 litro en cantimplora o botella con cierre hermético.</li>
+          <li>Algún snack energético: fruta, frutos secos o barritas.</li>
+          <li>Gorra, gafas de sol y protector solar.</li>
+          <li>Chubasquero.</li>
+        </ul>
+        <ul class="g-list">
+          <li>Botiquín personal (ver más abajo).</li>
+          <li>Calzado y calcetines de repuesto.</li>
+          <li>Móvil, batería externa y cargador.</li>
+          <li>Documentación: DNI/pasaporte, tarjeta sanitaria, tarjeta de crédito y la credencial del peregrino.</li>
+        </ul>
+      </div>
+      <p>Además, conviene llevar siempre encima un papel (o nota en el móvil) con el nombre y teléfono de un contacto familiar para urgencias, y cualquier intolerancia o alergia médica relevante.</p>
+    </div>
+  </section>
+
+  <!-- BOTIQUIN -->
+  <section class="g-section" id="botiquin">
+    <div class="g-head"><span class="g-icon">&#128138;</span><h2>El botiquín personal</h2></div>
+    <div class="g-body">
+      <p>Con un botiquín básico bien preparado se resuelven la mayoría de los contratiempos del Camino: dolores musculares, ampollas, rozaduras, golpes de calor, quemaduras solares o algún que otro percance digestivo.</p>
+      <div class="tag-row">
+        <span class="tag">Tiritas y apósitos (varios tamaños)</span>
+        <span class="tag">Aguja e hilo</span>
+        <span class="tag">Gasas y esparadrapo</span>
+        <span class="tag">Algodón</span>
+        <span class="tag">Agua oxigenada</span>
+        <span class="tag">Povidona yodada</span>
+        <span class="tag">Cristalmina</span>
+        <span class="tag">Vaselina neutra</span>
+        <span class="tag">Antidiarreico</span>
+        <span class="tag">Analgésicos / antiinflamatorios</span>
+        <span class="tag">Protector solar</span>
+        <span class="tag">Repelente de insectos</span>
+        <span class="tag">Tijeras pequeñas</span>
+      </div>
+      <div class="callout gold">Cada persona debe ser consciente de sus propias patologías y no olvidar la medicación habitual que necesite: en varias etapas no habrá farmacia cerca donde poder comprarla.</div>
+    </div>
+  </section>
+
+  <!-- PIES -->
+  <section class="g-section" id="pies">
+    <div class="g-head"><span class="g-icon">&#129462;</span><h2>Cuidado de los pies</h2></div>
+    <div class="g-body">
+      <p>Los pies son la herramienta más importante del Camino, así que merecen atención diaria desde el primer día.</p>
+      <h3>Cada mañana</h3>
+      <p>Antes de calzarse, un masaje de unos cinco minutos por pie, con crema hidratante, vaselina o similar, insistiendo entre los dedos, la planta y el talón. Después, secar bien y calzarse con calcetines colocados sin arrugas, para que no rocen.</p>
+      <h3>Al terminar la etapa</h3>
+      <p>Ducharse y lavar los pies con cuidado, secando muy bien entre los dedos (para evitar hongos), y dejarlos descansar. Un baño de agua templada con sal (una cucharada sopera por litro) durante unos cinco minutos ayuda a desinflamar. Las chanclas son imprescindibles en duchas y vestuarios colectivos.</p>
+      <h3>Ampollas y uñas</h3>
+      <ul class="g-list">
+        <li>Si empieza a notarse una ampolla, proteger la zona con un apósito tipo Compeed o una gasa con esparadrapo antes de que vaya a más.</li>
+        <li>Bajo ningún concepto arrancar la piel de una ampolla ya formada; si es grande o duele mucho, mejor que lo trate alguien con más experiencia para evitar infecciones.</li>
+        <li>Llevar las uñas de los pies bien cortadas y arregladas — el calzado inadecuado o bajar mal las cuestas son las causas más comunes de perder una uña.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIERNAS Y BASTON -->
+  <section class="g-section" id="piernas">
+    <div class="g-head"><span class="g-icon">&#129466;</span><h2>Piernas, bastón y protección solar</h2></div>
+    <div class="g-body">
+      <p>Las piernas cargan con todo el esfuerzo, así que conviene vigilar tendinitis y sobrecargas musculares. Un masaje con crema hidratante en pantorrillas y muslos antes de caminar ayuda, y cremas como Voltaren en gel pueden aliviar molestias puntuales (consultando antes con el médico de familia o enfermería).</p>
+      <p>El <b>bastón de senderismo</b> es muy recomendable, sobre todo en el terreno gallego, con pendientes constantes e irregulares por encima del 6&nbsp;%. Además de proteger rodillas y ayudar en el equilibrio, también es un buen disuasorio ante algún perro suelto.</p>
+      <p>El <b>protector solar</b> debería aplicarse cada mañana antes de salir, en todas las zonas expuestas, y llevar gorra o pañuelo para la cabeza — el sol gallego, aunque no parezca tan fuerte como el andaluz, se nota tras muchas horas de camino.</p>
+    </div>
+  </section>
+
+  <!-- NORMAS EN LA RUTA -->
+  <section class="g-section" id="ruta">
+    <div class="g-head"><span class="g-icon">&#129517;</span><h2>Normas del grupo en la ruta</h2></div>
+    <div class="g-body">
+      <h3>El ritmo del grupo</h3>
+      <ul class="g-list">
+        <li>Caminaremos a un ritmo medio de 4&ndash;5 km/h, con paradas intermedias para descansar. Esto no es una carrera: lo importante es el camino diario, no llegar el primero.</li>
+        <li>No se debe adelantar la línea de cabeza (marcada por quien va guiando el grupo) ni quedarse rezagado por detrás de la cola, para no perderse.</li>
+        <li>Si alguien tiene que apartarse del grupo (baño u otra necesidad), debe avisar a un compañero cercano. No descolgarse nunca del pelotón por libre.</li>
+      </ul>
+      <h3>Las flechas amarillas</h3>
+      <p>La señal de referencia en todo el Camino son las flechas amarillas, pintadas por primera vez en los años 80 por el cura Elías Valiña. Aparecen en postes, muros, aceras, señales de tráfico o árboles. Si en algún tramo se dejan de ver durante más de 500 metros, lo más probable es que nos hayamos desviado: lo mejor es volver sobre los propios pasos hasta encontrar la última flecha vista.</p>
+      <h3>Animales sueltos</h3>
+      <p>Al pasar por aldeas o fincas puede haber perros sueltos: en grupo suelen ladrar pero no atacan. Si alguno se pone nervioso, lo mejor es no salir corriendo y plantarle cara con calma. Tampoco conviene dar de comer a animales sueltos que se acerquen — aunque parezca un gesto bonito, luego quedan desorientados y lejos de su sitio.</p>
+      <div class="callout green">En la primera etapa se compartirán los teléfonos de quienes vayan a la cabeza y a la cola del grupo, por si hiciera falta avisar de cualquier incidencia.</div>
+    </div>
+  </section>
+
+  <!-- CONVIVENCIA -->
+  <section class="g-section" id="convivencia">
+    <div class="g-head"><span class="g-icon">&#129309;</span><h2>Convivencia y últimas recomendaciones</h2></div>
+    <div class="g-body">
+      <p>El Camino se vive de forma individual, pero se hace en grupo: conviviremos varios días seguidos entre las dos hermandades, así que el respeto mutuo — y hacia cualquier otro peregrino o vecino que nos encontremos por el camino — es la base de que todo salga bien.</p>
+      <h3>Salud y alergias</h3>
+      <p>Quien tenga alguna intolerancia alimentaria, alergia (alimentaria, al polen, a picaduras...) o cualquier condición médica relevante, debería avisarlo con antelación y llevar el tratamiento necesario encima. Algunas etapas transcurren lejos de núcleos de población, y ante una emergencia puede llevar un rato llegar hasta el punto más cercano de asistencia.</p>
+      <h3>No beber de las fuentes</h3>
+      <p>Por precaución, evitar beber agua directamente de fuentes o arroyos que no estén señalizadas como potables.</p>
+      <h3>Hidratación y energía</h3>
+      <p>Mejor beber poca cantidad de agua pero con frecuencia, en vez de grandes tragos espaciados, para evitar la deshidratación. Plátano, frutos secos o algo de chocolate son buenos aliados en los tramos más largos.</p>
+      <h3>Respeto al entorno</h3>
+      <p>Nada de tirar basura por el camino salvo que sea biodegradable — el entorno natural que atravesamos es parte de lo que hace especial esta experiencia.</p>
+      <div class="callout gold">Cada etapa tendrá su propio desnivel, distancia y esfuerzo. El ánimo y las ganas cuentan tanto como las piernas: disfrutemos del camino, de la compañía y de esta experiencia que, cuando se llega a la Plaza del Obradoiro, se recuerda para siempre.</div>
+      <p class="script" style="font-size:22px; color:var(--burgundy-soft); text-align:center; margin-top:22px;">¡Buen Camino, peregrinos!</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="watermark" style="opacity:0.08;"></div>
+  <span class="script">Ultreia et suseia</span>
+  <p>Hermandad del Cerro &amp; Hermandad de Santa Marta</p>
+  <p><a href="camino-ultreia.html">&#8592; Volver a la web de la ruta</a></p>
+</footer>
+
+</body>
+</html>
